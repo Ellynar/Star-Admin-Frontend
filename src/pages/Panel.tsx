@@ -1,17 +1,21 @@
 import React from 'react';
 import { NavLink, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 import LogoImgtxt from '../assets/Magiteque-logo-text.png';
+import LogoSmall from '../assets/Magiteque-logo-text-small.png';
 import ChatIcon from '../assets/chat.png';
 import HealthIcon from '../assets/health.png';
 import BookIcon from '../assets/book.png';
 import VideoIcon from '../assets/video.png';
 import UserIcon from '../assets/user.png';
 
-const Chat = () => <div className="panel__empty"><div className="bubble bubble--lg"/><div className="bubble bubble--md"/><p>Stay in touch with your health coaching team.</p><small>Your conversations are private & confidential.</small></div>;
-const Health = () => <div className="panel__empty"><p>Health</p></div>;
-const Learn = () => <div className="panel__empty"><p>Learn</p></div>;
-const Consult = () => <div className="panel__empty"><p>Consultations</p></div>;
-const Profile = () => <div className="panel__empty"><p>Profile</p></div>;
+const Wip: React.FC<{ label: string }> = ({ label }) => (
+  <div className="wip">
+    <div className="wip__emoji">🎉✨</div>
+    <h2>{label} is still in development</h2>
+    <p>We’re crafting something awesome. Check back soon!</p>
+    <div className="wip__confetti" aria-hidden="true" />
+  </div>
+);
 
 const Panel: React.FC = () => {
   const navigate = useNavigate();
@@ -19,7 +23,8 @@ const Panel: React.FC = () => {
     <div className="panel">
       <aside className="panel__sidebar">
         <div className="panel__logo">
-          <img src={LogoImgtxt} alt="Logo" />
+          <img className="logo-full" src={LogoImgtxt} alt="Logo" />
+          <img className="logo-small" src={LogoSmall} alt="Logo small" />
         </div>
         <nav className="panel__nav">
           <NavLink to="chat" className={({isActive}) => isActive ? 'active' : ''}><img className="icon-img" src={ChatIcon} alt="" /><span>Chat</span></NavLink>
@@ -35,11 +40,11 @@ const Panel: React.FC = () => {
       <main className="panel__content">
         <Routes>
           <Route path="" element={<Navigate to="chat" replace />} />
-          <Route path="chat" element={<Chat/>} />
-          <Route path="health" element={<Health/>} />
-          <Route path="learn" element={<Learn/>} />
-          <Route path="consultations" element={<Consult/>} />
-          <Route path="profile" element={<Profile/>} />
+          <Route path="chat" element={<Wip label="Chat"/>} />
+          <Route path="health" element={<Wip label="Health"/>} />
+          <Route path="learn" element={<Wip label="Learn"/>} />
+          <Route path="consultations" element={<Wip label="Consultations"/>} />
+          <Route path="profile" element={<Wip label="Profile"/>} />
         </Routes>
       </main>
     </div>

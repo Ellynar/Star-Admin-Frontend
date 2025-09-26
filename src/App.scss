@@ -448,14 +448,13 @@ body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 
   grid-template-rows: auto 1fr auto;
 }
 
-.panel__logo {
-  color: var(--c-sky);
-  font-weight: 800;
-  font-size: 28px;
-  letter-spacing: 0.5px;
-  margin: 4px 8px 20px;
-}
-.panel__logo img { height: 50px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;}
+.panel__logo { position: relative; display: grid; place-items: center; }
+.panel__logo .logo-full { display: none; height: 42px; }
+.panel__logo .logo-small { display: block; height: 42px; }
+.panel__sidebar:hover .panel__logo .logo-full { display: block; height: 50px; }
+.panel__sidebar:hover .panel__logo .logo-small { display: none; }
+.panel__sidebar:hover .panel__logo { margin-top: 20px; margin-bottom: 30px;}
+.panel__sidebar:not(:hover) .panel__logo { margin-top: 80px; }
 
 .panel__nav { 
   display: flex; 
@@ -487,10 +486,10 @@ body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 
   filter: grayscale(100%) brightness(1.6) contrast(70%);
   opacity: 0.9;
 }
-.panel__nav a.active { background: #111826; color: #fff; }
+.panel__nav a.active { background: #08634b; color: #fff; }
 .panel__nav a.active .icon-img { filter: invert(100%) brightness(1.1); opacity: 1; }
 
-.panel__footer { margin-top: auto; padding: 10px; }
+.panel__footer { margin-top: auto; padding: 10px; display: grid; place-items: center; }
 .panel__logout {
   width: 100%;
   padding: 10px 14px;
@@ -533,3 +532,62 @@ body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, 
 }
 .bubble--lg { width: 70%; height: 48%; top: 8%; right: 5%; border-radius: 50px; }
 .bubble--md { width: 60%; height: 38%; bottom: 8%; left: 10%; border-radius: 50px; }
+
+.wip {
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(251,255,220,0.85);
+  border: 1px solid rgba(0,0,0,0.05);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.wip h2 { margin: 0; color: #0f172a; font-size: 24px; }
+.wip p { color: #334155; margin-top: 6px; }
+.wip__emoji { font-size: 28px; }
+.wip__confetti {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(ellipse at 20% -10%, rgba(255,215,0,0.25), transparent 40%),
+              radial-gradient(ellipse at 80% 110%, rgba(152,255,152,0.2), transparent 40%);
+  pointer-events: none;
+}
+
+/* == Collapsed sidebar behavior (icons only) == */
+/* Force grid to follow sidebar width (prevents leftover 264px column) */
+.panel { grid-template-columns: auto 1fr !important; }
+
+/* Collapsed sidebar: 80px, no horizontal padding */
+.panel__sidebar { width: 80px; padding-left: 0 !important; padding-right: 0 !important; }
+
+/* Remove nav horizontal padding when collapsed so icons sit flush */
+.panel__sidebar:not(:hover) .panel__nav { padding-left: 0 !important; padding-right: 0 !important; margin: 0; align-items: center; padding-top: 50px; }
+.panel__sidebar:not(:hover) .panel__nav a { 
+  width: 48px; 
+  height: 48px; 
+  padding: 0; 
+  margin: 8px auto; 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 0; 
+}
+.panel__sidebar:not(:hover) .panel__nav a span { display: none !important; }
+.panel__sidebar:not(:hover) .panel__nav a .icon-img { width: 28px; height: 28px; display: block; margin: auto; }
+
+/* Keep circular active background when collapsed */
+.panel__sidebar:not(:hover) .panel__nav a.active { background: #064e3b; }
+.panel__sidebar:not(:hover) .panel__nav a.active .icon-img { filter: invert(100%) brightness(1.1); }
+
+/* Logout icon-only button centered */
+.panel__sidebar:not(:hover) .panel__footer { padding-left: 0 !important; padding-right: 0 !important; }
+.panel__sidebar:not(:hover) .panel__logout { width: 48px; height: 48px; margin: 8px auto; padding: 0; border-radius: 50%; font-size: 0; position: relative; }
+.panel__sidebar:not(:hover) .panel__logout::after { content: '\23FB'; position: absolute; inset: 0; display: grid; place-items: center; font-size: 18px; color: #ef4444; }
+
+/* Sidebar hover expansion fix (overrides) */
+.panel { grid-template-columns: auto 1fr !important; }
+.panel__sidebar { width: 80px; padding: 24px 0 12px; box-sizing: border-box; transition: width 200ms ease, padding 200ms ease; z-index: 5; }
+.panel__sidebar:hover { width: 264px; padding: 80px 18px 16px; }
