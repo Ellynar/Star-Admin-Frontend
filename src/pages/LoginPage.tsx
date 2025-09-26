@@ -4,6 +4,7 @@ import Modal from '../components/Modal';
 import GoogleIcon from '../assets/Google-icon.png';
 import USIcon from '../assets/us.png';
 import PHIcon from '../assets/philippines.png';
+import { useNavigate } from 'react-router-dom';
 
 const SLIDE_INTERVAL_MS = 6000;
 const SLIDE_COUNT = 4;
@@ -23,6 +24,7 @@ const LANG_OPTIONS: { key: LangKey; label: string; icon: string }[] = [
 ];
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = React.useState<number>(0);
   const [dragDelta, setDragDelta] = React.useState<number>(0);
   const [isDragging, setIsDragging] = React.useState<boolean>(false);
@@ -149,7 +151,7 @@ const LoginPage: React.FC = () => {
         <div className="login-page__content">
           <h1>Hello there!</h1>
           <p>How can we help you today?</p>
-          <button className="btn btn-primary">Log in</button>
+          <button className="btn btn-primary" onClick={() => navigate('/panel')}>Log in</button>
           <button className="btn btn-secondary" onClick={() => setIsModalOpen(true)}>Sign up</button>
           <div className="login-page__separator">
             <span>or login using gmail</span>

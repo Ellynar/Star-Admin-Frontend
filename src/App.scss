@@ -420,3 +420,116 @@ body {
 .lang-dropdown__item:hover { background: #f6f6f6; }
 .lang-dropdown__item img { width: 18px; height: 18px; border-radius: 50%; display: block; }
 .lang-dropdown__item span { color: #2c3e50; }
+
+/* Theme variables */
+:root {
+  --c-sky: #79E0EE;
+  --c-mint: #98EECC;
+  --c-pistachio: #D0F5BE;
+  --c-cream: #FBFFDC;
+}
+
+/* Global font */
+body { font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+
+/* Panel layout (refined) */
+.panel {
+  display: grid;
+  grid-template-columns: 264px 1fr;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--c-cream), var(--c-pistachio));
+}
+
+.panel__sidebar {
+  background: #fff;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding: 80px 18px 16px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.panel__logo {
+  color: var(--c-sky);
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  margin: 4px 8px 20px;
+}
+.panel__logo img { height: 50px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;}
+
+.panel__nav { 
+  display: flex; 
+  flex-direction: column;
+  gap: 14px; 
+  padding: 4px 4px; 
+}
+
+.panel__nav a {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  align-items: center;
+  gap: 30px;
+  padding: 14px 16px;
+  border-radius: 22px;
+  color: #94a3b8; /* slate-400 */
+  text-decoration: none;
+  background: transparent;
+  font-weight: 600;
+  font-size: 16px;
+}
+.panel__nav a:hover { background: rgba(2,6,23,0.06); }
+.panel__nav a .icon { width: 22px; height: 22px; opacity: 0.9; }
+.panel__nav a .icon-img { 
+  width: 30px; 
+  height: 30px; 
+  display: block; 
+  /* turn solid black PNGs into lighter gray */
+  filter: grayscale(100%) brightness(1.6) contrast(70%);
+  opacity: 0.9;
+}
+.panel__nav a.active { background: #111826; color: #fff; }
+.panel__nav a.active .icon-img { filter: invert(100%) brightness(1.1); opacity: 1; }
+
+.panel__footer { margin-top: auto; padding: 10px; }
+.panel__logout {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  color: #ef4444; /* red-500 */
+  font-weight: 700;
+  cursor: pointer;
+}
+.panel__logout:hover { background: #fff5f5; }
+
+/* Adjust install pill & join row styles could go here later */
+
+.panel__content {
+  background: linear-gradient(180deg, rgba(121,224,238,0.18), rgba(152,238,204,0.18));
+  padding: 1rem;
+}
+
+.panel__empty {
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(251,255,220,0.75);
+  border: 1px solid rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: end center;
+  padding: 2rem;
+}
+
+.panel__empty p { color: #356; margin: 0.5rem 0 0; }
+.panel__empty small { color: #497; }
+
+.bubble {
+  position: absolute;
+  border: 3px solid var(--c-sky);
+  border-radius: 40px;
+  background: rgba(121,224,238,0.15);
+}
+.bubble--lg { width: 70%; height: 48%; top: 8%; right: 5%; border-radius: 50px; }
+.bubble--md { width: 60%; height: 38%; bottom: 8%; left: 10%; border-radius: 50px; }

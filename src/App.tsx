@@ -1,10 +1,17 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
+import Panel from './pages/Panel';
 import './App.scss';
 
 function App() {
   return (
-    <LoginPage />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/panel/*" element={<Panel />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
