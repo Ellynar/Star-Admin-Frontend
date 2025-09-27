@@ -1,0 +1,163 @@
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: $font-family-base;
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+
+    & > .login-page__slides {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      height: 100%;
+      transition: transform 0.6s ease-in-out;
+      cursor: grab;
+      will-change: transform;
+      touch-action: pan-y;
+
+      &.dragging { cursor: grabbing; transition: none; }
+    }
+
+    & > .login-page__slides .login-page__slide {
+      flex: 0 0 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      pointer-events: none;
+    }
+
+    .bg-1 { background-image: url('../../assets/Login-Background.png'); }
+    .bg-2 { background-image: url('../../assets/Login-Background-2.png'); }
+    .bg-3 { background-image: url('../../assets/Login-Background-3.png'); }
+    .bg-4 { background-image: url('../../assets/Login-Background-4.png'); }
+
+    .login-page__overlay {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      width: 100%;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  &__logo img {
+    width: 150px;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__tagline { font-size: 1.2rem; color: #555; text-align: center; margin-top: auto; margin-bottom: 2rem; }
+
+  &__carousel-indicators {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+
+    button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      background-color: rgba(39, 241, 198, 0.514);
+      opacity: 0.8;
+      transition: transform 0.15s ease-in-out, box-shadow 0.2s ease, background-color 0.2s ease;
+      outline: none;
+
+      &.active {
+        background-color: #ffd700;
+        box-shadow: 0 0 8px 3px rgba(255, 215, 0, 0.9), 0 0 18px 6px rgba(255, 215, 0, 0.6), 0 0 30px 10px rgba(255, 215, 0, 0.35);
+        opacity: 1;
+      }
+
+      &:hover { transform: scale(1.15); }
+      &:focus-visible { box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.35); }
+    }
+  }
+
+  &__language-selector { display: flex; align-items: center; gap: 0.5rem; position: absolute; top: 2rem; right: 2rem; cursor: pointer; }
+
+  &__content {
+    text-align: center;
+
+    h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    p { font-size: 1rem; color: #666; margin-bottom: 2rem; }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 2rem 0;
+
+    &::before, &::after { content: ''; flex: 1; border-bottom: 1px solid #ccc; }
+    &:not(:empty)::before { margin-right: .5em; }
+    &:not(:empty)::after { margin-left: .5em; }
+    span { color: #777; }
+  }
+
+  &__qr-code { margin-top: 2rem; img { width: 150px; height: 150px; } }
+
+  &__google {
+    margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 22px;
+    padding: 0.5rem 0.9rem;
+    background: #fff;
+
+    img { width: 20px; height: 20px; display: block; }
+    span { font-weight: 600; color: #2c3e50; }
+  }
+
+  &__slide-text {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.25);
+  }
+}
+
+/* Language dropdown (used on login page) */
+.lang-dropdown { position: absolute; top: 1rem; right: 1rem; }
+.lang-dropdown__button { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid #e0e0e0; background: #fff; border-radius: 20px; padding: 0.35rem 0.75rem; cursor: pointer; }
+.lang-dropdown__button img { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.lang-dropdown__menu { position: absolute; right: 0; margin-top: 0.5rem; background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; min-width: 180px; box-shadow: 0 10px 24px rgba(0,0,0,0.12); padding: 0.35rem; z-index: 5; list-style: none; }
+.lang-dropdown__item { display: flex; align-items: center; gap: 0.5rem; width: 100%; padding: 0.4rem 0.5rem; background: transparent; border: none; border-radius: 8px; cursor: pointer; }
+.lang-dropdown__item:hover { background: #f6f6f6; }
+.lang-dropdown__item img { width: 18px; height: 18px; border-radius: 50%; display: block; }
+.lang-dropdown__item span { color: #2c3e50; }
+

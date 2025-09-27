@@ -1,0 +1,24 @@
+:root {
+  --c-sky: #{$c-sky};
+  --c-mint: #{$c-mint};
+  --c-pistachio: #{$c-pistachio};
+  --c-cream: #{$c-cream};
+}
+
+/* Typography */
+$font-heading: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+$font-body: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+body { font-family: $font-body; }
+
+/* Utility classes for headings used across app */
+.heading,
+.login-page h1,
+.panel__empty h2,
+.wip h2,
+.learn__title,
+.chat__peer,
+.modal__title {
+  font-family: $font-heading;
+}
+

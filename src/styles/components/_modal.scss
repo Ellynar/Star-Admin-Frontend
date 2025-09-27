@@ -1,0 +1,28 @@
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center; z-index: 1000; backdrop-filter: blur(2px);
+}
+
+@keyframes modal-pop {
+  0% { transform: scale(0.92); opacity: 0; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal {
+  width: min(520px, 92vw);
+  background: #fff;
+  border-radius: $radius-lg;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+  padding: 1.5rem 1.5rem 1.25rem;
+  position: relative;
+  animation: modal-pop 280ms ease-out;
+  border: 2px solid rgba($c-yellow, 0.5);
+}
+.modal__title { margin: 0 0 0.75rem; text-align: center; font-size: 1.4rem; }
+.modal__content { text-align: center; color: #2c3e50; font-size: 1rem; }
+.modal__actions { margin-top: 1.25rem; display: flex; gap: .75rem; justify-content: center; }
+.modal__close { position:absolute; top:10px; right:12px; background:$c-yellow; color:#2c3e50; border:none; width:28px; height:28px; border-radius:50%; cursor:pointer; font-size:18px; line-height:1; box-shadow:0 0 10px rgba($c-yellow,0.6); }
+.modal__badge { display:inline-flex; align-items:center; gap:.5rem; margin-bottom:.5rem; color:#2c3e50; }
+.modal__confetti { position:absolute; pointer-events:none; inset:-10px; background: radial-gradient(ellipse at 20% -10%, rgba($c-yellow,0.25), transparent 40%), radial-gradient(ellipse at 80% 110%, rgba(152,255,152,0.2), transparent 40%); border-radius:$radius-lg; z-index:-1; }
+

@@ -1,5 +1,9 @@
 import React from 'react';
 import { NavLink, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import LearnPage from './LearnPage';
+import AssessmentsPage from './AssessmentsPage';
+import GroundWorkPage from './GroundWorkPage';
+import ChatPage from './ChatPage';
 import LogoImgtxt from '../assets/Magiteque-logo-text.png';
 import LogoSmall from '../assets/Magiteque-logo-text-small.png';
 import ChatIcon from '../assets/chat.png';
@@ -40,9 +44,11 @@ const Panel: React.FC = () => {
       <main className="panel__content">
         <Routes>
           <Route path="" element={<Navigate to="chat" replace />} />
-          <Route path="chat" element={<Wip label="Chat"/>} />
+          <Route path="chat" element={<ChatPage/>} />
           <Route path="health" element={<Wip label="Health"/>} />
-          <Route path="learn" element={<Wip label="Learn"/>} />
+          <Route path="learn" element={<LearnPage/>} />
+          <Route path="learn/assessments" element={<AssessmentsPage/>} />
+          <Route path="learn/ground-work" element={<GroundWorkPage/>} />
           <Route path="consultations" element={<Wip label="Consultations"/>} />
           <Route path="profile" element={<Wip label="Profile"/>} />
         </Routes>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.scss';
+// styles are imported globally via styles/main.scss
 import Modal from '../components/Modal';
 import GoogleIcon from '../assets/Google-icon.png';
 import USIcon from '../assets/us.png';
@@ -9,10 +9,10 @@ import { useNavigate } from 'react-router-dom';
 const SLIDE_INTERVAL_MS = 6000;
 const SLIDE_COUNT = 4;
 const SLIDE_TEXTS = [
-  'slider 1',
-  'slider 2',
-  'slider 3',
-  'slider 4'
+  'Personalised health programme based on your needs and goals',
+  'Access to a multidiciplinary coaches to guide you through your journey',
+  'Comprehensive screening for both phyisical and mental health',
+  'Practical guides, tips and best practices to maintain healthier habits'
 ];
 
 type LangKey = 'en' | 'fil' | 'bis';

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Panel from './pages/Panel';
-import './App.scss';
+import './styles/main.scss';
 
 function App() {
   return (
